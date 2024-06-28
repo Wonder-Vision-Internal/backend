@@ -689,7 +689,7 @@ const getCrouselTestimonial = async(req,res)=>{
 }
 
 const bestThingsToDo = async (req, res) => {
-    const data = await bestThingsModel.find({ slug: req.params.slug }).sort({serialNumber: 1}).lean();
+    const data = await bestThingsModel.find({ slug: req.params.slug }).lean();
     res.status(200).json({ data })
 }
 

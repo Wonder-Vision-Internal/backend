@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const bestThingSchema = new mongoose.Schema({
     slug: String,
-    serialNumber: Number,
+    icon: String,
     title: String,
 });
 
