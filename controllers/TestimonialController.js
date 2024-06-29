@@ -1,5 +1,6 @@
 const { default: mongoose } = require('mongoose');
 const postModel = require('../Models/posts.schema')
+const testimonialModel = require("../Models/testimonial.schema");
 
 class Testimonial {
 
@@ -84,6 +85,76 @@ async deleteTestimonial(req,res){
     })
 }
 
+
+    async addTestimonialsCrousel(req, res) {
+
+        const postData = {};
+
+        if(req.body.userImg) {
+            postData.userImg = req.body.userImg;
+        }
+
+        if(req.body.userName) {
+            postData.userName = req.body.userName;
+        }
+        
+        if(req.body.title) {
+            postData.title = req.body.title;
+        }
+
+        if(req.body.screenImg) {
+            postData.screenImg = req.body.screenImg;
+        }
+
+        await testimonialModel.create(postData);
+        
+        res.status(200).json({})
+
+    }
+ 
+    async getTestimonialsCrousel(req, res) {
+        
+        const data = await testimonialModel.find({}).lean();
+
+        res.status(200).json({data})
+
+    }
+
+    async updateTestimonialsCrousel(req, res) {
+
+        const postData = {};
+
+        if(req.body.userImg) {
+            postData.userImg = req.body.userImg;
+        }
+
+        if(req.body.userName) {
+            postData.userName = req.body.userName;
+        }
+        
+        if(req.body.title) {
+            postData.title = req.body.title;
+        }
+
+        if(req.body.screenImg) {
+            postData.screenImg = req.body.screenImg;
+        }
+
+        await testimonialModel.updateOne({_id: req.params.id}, {
+            $set: postData
+        });
+        
+        res.status(200).json({})
+
+    }
+
+    async deleteTestimonialsCrousel(req, res) {
+        
+        await testimonialModel.deleteOne(req.params.id)
+
+        res.status(200).json({})
+
+    }
 
 }
 

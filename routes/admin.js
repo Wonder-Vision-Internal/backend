@@ -44,6 +44,9 @@ var staffController = require('../controllers/StaffController')
 var permissionController = require('../controllers/PermissionController')
 var bookingController = require('../controllers/BookingController');
 const frontController = require('../controllers/FrontController');
+const bestThingsController = require('../controllers/BestThingsToDo');
+const bestPlacesController = require('../controllers/BestPlaces');
+const packageYoutubeUrlController = require('../controllers/PackageYoutubeUrlController.js');
 
 //Routes
 
@@ -199,6 +202,38 @@ router.get('/testimonial-list',testimonialController.getTestimonials)
 router.post('/addtestimonial',upload.single(),testimonialController.addTestimonial)
 router.post('/updatetestimonial',upload.single(),testimonialController.updateTestimonial)
 router.get('/deletetestimonial/:testimonialId',testimonialController.deleteTestimonial)
+
+router.post('/add-testimonials-crousel', testimonialController.addTestimonialsCrousel)
+
+router.get('/get-testimonials-crousel', testimonialController.getTestimonialsCrousel)
+
+router.patch('/update-testimonials-crousel/:id', testimonialController.updateTestimonialsCrousel)
+
+router.delete('/delete-testimonials-crousel/:id', testimonialController.deleteTestimonialsCrousel)
+
+router.post('/add-best-things-to-do', bestThingsController.addBestThingsToDo)
+
+router.get('/get-best-things-to-do', bestThingsController.getBestThingsToDo)
+
+router.patch('/update-best-things-to-do/:id', bestThingsController.updateBestThingsToDo)
+
+router.delete('/delete-best-things-to-do/:id', bestThingsController.deleteBestThingsToDo)
+
+router.post('/add-best-places', bestPlacesController.addBestPlaces)
+
+router.get('/get-best-places', bestPlacesController.getBestPlaces)
+
+router.patch('/update-best-places/:id', bestPlacesController.updateBestPlaces)
+
+router.delete('/delete-best-places/:id', bestPlacesController.deleteBestPlaces)
+
+router.post('/add-package-youtube-url', packageYoutubeUrlController.addPackageYoutube)
+
+router.get('/get-package-youtube-url', packageYoutubeUrlController.getPackageYoutube)
+
+router.patch('/update-package-youtube-url/:id', packageYoutubeUrlController.updatePackageYoutube)
+
+router.delete('/delete-package-youtube-url/:id', packageYoutubeUrlController.deletePackageYoutube)
 
 router.get('/getallblogs',blogController.getAllBlogs)
 router.post('/addblog',upload.single('f_img'),blogController.addBlog)
