@@ -90,7 +90,7 @@ async deleteTestimonial(req,res){
         try {
             const { filename } = req.file;
 
-            res.status(200).json({filename: 'img/' + filename})
+            res.status(200).json({filename})
         }catch(err) {
             res.status(500).json({})
         }

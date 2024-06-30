@@ -1,4 +1,5 @@
 const bestThingsModel = require("../Models/bestThings.schema");
+const mongoose = require('mongoose')
 
 
 class BestThings {

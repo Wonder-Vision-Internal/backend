@@ -1,4 +1,5 @@
 const bestPlacesModel = require("../Models/bestPlaces.schema");
+const mongoose = require('mongoose')
 
 
 class BestPlaces {
