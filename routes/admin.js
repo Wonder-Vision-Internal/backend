@@ -203,7 +203,7 @@ router.post('/addtestimonial',upload.single(),testimonialController.addTestimoni
 router.post('/updatetestimonial',upload.single(),testimonialController.updateTestimonial)
 router.get('/deletetestimonial/:testimonialId',testimonialController.deleteTestimonial)
 
-router.post('/add-img',upload.single(),  testimonialController.addImg)
+router.post('/add-img',upload.single('file'),  testimonialController.addImg)
 
 
 router.post('/add-testimonials-crousel', testimonialController.addTestimonialsCrousel)
