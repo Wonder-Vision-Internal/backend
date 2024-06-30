@@ -41,7 +41,7 @@ class PackageYoutubeUrlController {
             postData.url = req.body.url;
         }
 
-        await packageYoutubeModel.updateOne({ _id: req.params.id }, {
+        await packageYoutubeModel.updateOne({ _id: new mongoose.Types.ObjectId(req.params.id) }, {
             $set: postData
         });
 
@@ -51,7 +51,7 @@ class PackageYoutubeUrlController {
 
     async deletePackageYoutube(req, res) {
 
-        await packageYoutubeModel.deleteOne(req.params.id)
+        await packageYoutubeModel.deleteOne({ _id: new mongoose.Types.ObjectId(req.params.id) })
 
         res.status(200).json({})
 

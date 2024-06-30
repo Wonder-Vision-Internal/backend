@@ -146,7 +146,7 @@ async deleteTestimonial(req,res){
             postData.screenImg = req.body.screenImg;
         }
 
-        await testimonialModel.updateOne({_id: req.params.id}, {
+        await testimonialModel.updateOne({_id: new mongoose.Types.ObjectId(req.params.id)}, {
             $set: postData
         });
         
@@ -156,7 +156,7 @@ async deleteTestimonial(req,res){
 
     async deleteTestimonialsCrousel(req, res) {
         
-        await testimonialModel.deleteOne(req.params.id)
+        await testimonialModel.deleteOne( { _id: new mongoose.Types.ObjectId(req.params.id) } )
 
         res.status(200).json({})
 

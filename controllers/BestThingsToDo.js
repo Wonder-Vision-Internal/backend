@@ -49,7 +49,7 @@ class BestThings {
             postData.title = req.body.title;
         }
 
-        await bestThingsModel.updateOne({ _id: req.params.id }, {
+        await bestThingsModel.updateOne({ _id: new mongoose.Types.ObjectId(req.params.id) }, {
             $set: postData
         });
 
@@ -59,7 +59,7 @@ class BestThings {
 
     async deleteBestThingsToDo(req, res) {
 
-        await bestThingsModel.deleteOne(req.params.id)
+        await bestThingsModel.deleteOne({ _id: new mongoose.Types.ObjectId(req.params.id) })
 
         res.status(200).json({})
 

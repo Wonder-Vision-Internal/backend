@@ -57,7 +57,7 @@ class BestPlaces {
             postData.img = req.body.img;
         }
 
-        await bestPlacesModel.updateOne({ _id: req.params.id }, {
+        await bestPlacesModel.updateOne({ _id: new mongoose.Types.ObjectId(req.params.id) }, {
             $set: postData
         });
 
@@ -67,7 +67,7 @@ class BestPlaces {
 
     async deleteBestPlaces(req, res) {
 
-        await bestPlacesModel.deleteOne(req.params.id)
+        await bestPlacesModel.deleteOne({ _id: new mongoose.Types.ObjectId(req.params.id) })
 
         res.status(200).json({})
 
