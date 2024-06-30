@@ -5,63 +5,82 @@ class BestThings {
 
     async addBestThingsToDo(req, res) {
 
-        const postData = {};
+        try {
+            const postData = {};
 
-        if (req.body.slug) {
-            postData.slug = req.body.slug;
+            if (req.body.slug) {
+                postData.slug = req.body.slug;
+            }
+    
+            if (req.body.icon) {
+                postData.icon = req.body.icon;
+            }
+    
+            if (req.body.title) {
+                postData.title = req.body.title;
+            }
+    
+            await bestThingsModel.create(postData);
+    
+            res.status(200).json({})
+        }catch(err) {
+            res.status(500).json({})
         }
-
-        if (req.body.icon) {
-            postData.icon = req.body.icon;
-        }
-
-        if (req.body.title) {
-            postData.title = req.body.title;
-        }
-
-        await bestThingsModel.create(postData);
-
-        res.status(200).json({})
 
     }
 
     async getBestThingsToDo(req, res) {
 
-        const data = await bestThingsModel.find({}).lean();
+        try {
 
-        res.status(200).json({ data })
+            const data = await bestThingsModel.find({}).lean();
+
+            res.status(200).json({ data })
+
+        }catch(err) {
+            res.status(500).json({})
+        }
 
     }
 
     async updateBestThingsToDo(req, res) {
 
-        const postData = {};
+        try {
+            const postData = {};
 
-        if (req.body.slug) {
-            postData.slug = req.body.slug;
+            if (req.body.slug) {
+                postData.slug = req.body.slug;
+            }
+    
+            if (req.body.icon) {
+                postData.icon = req.body.icon;
+            }
+    
+            if (req.body.title) {
+                postData.title = req.body.title;
+            }
+    
+            await bestThingsModel.updateOne({ _id: new mongoose.Types.ObjectId(req.params.id) }, {
+                $set: postData
+            });
+    
+            res.status(200).json({})
+        }catch(err) {
+            res.status(500).json({})
         }
-
-        if (req.body.icon) {
-            postData.icon = req.body.icon;
-        }
-
-        if (req.body.title) {
-            postData.title = req.body.title;
-        }
-
-        await bestThingsModel.updateOne({ _id: new mongoose.Types.ObjectId(req.params.id) }, {
-            $set: postData
-        });
-
-        res.status(200).json({})
-
     }
 
     async deleteBestThingsToDo(req, res) {
 
-        await bestThingsModel.deleteOne({ _id: new mongoose.Types.ObjectId(req.params.id) })
+        try {
 
-        res.status(200).json({})
+            await bestThingsModel.deleteOne({ _id: new mongoose.Types.ObjectId(req.params.id) })
+
+            res.status(200).json({})
+
+        }catch(err) {
+            res.status(500).json({})
+        }
 
     }
 

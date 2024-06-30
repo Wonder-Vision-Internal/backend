@@ -5,55 +5,76 @@ class PackageYoutubeUrlController {
 
     async addPackageYoutube(req, res) {
 
-        const postData = {};
+        try {
+            const postData = {};
 
-        if (req.body.slug) {
-            postData.slug = req.body.slug;
+            if (req.body.slug) {
+                postData.slug = req.body.slug;
+            }
+    
+            if (req.body.url) {
+                postData.url = req.body.url;
+            }
+    
+            await packageYoutubeModel.create(postData);
+    
+            res.status(200).json({})
+
+        }catch(err) {
+            res.status(500).json({})
         }
-
-        if (req.body.url) {
-            postData.url = req.body.url;
-        }
-
-        await packageYoutubeModel.create(postData);
-
-        res.status(200).json({})
 
     }
 
     async getPackageYoutube(req, res) {
+        try {
 
-        const data = await packageYoutubeModel.find({}).lean();
+            const data = await packageYoutubeModel.find({}).lean();
 
-        res.status(200).json({data})
+            res.status(200).json({data})
+        }catch(err) {
+            res.status(500).json({})
+        }
+
 
     }
 
     async updatePackageYoutube(req, res) {
 
-        const postData = {};
+        try {
 
-        if (req.body.slug) {
-            postData.slug = req.body.slug;
+            const postData = {};
+
+            if (req.body.slug) {
+                postData.slug = req.body.slug;
+            }
+    
+            if (req.body.url) {
+                postData.url = req.body.url;
+            }
+    
+            await packageYoutubeModel.updateOne({ _id: new mongoose.Types.ObjectId(req.params.id) }, {
+                $set: postData
+            });
+    
+            res.status(200).json({})
+
+        }catch(err) {
+            res.status(500).json({})
         }
-
-        if (req.body.url) {
-            postData.url = req.body.url;
-        }
-
-        await packageYoutubeModel.updateOne({ _id: new mongoose.Types.ObjectId(req.params.id) }, {
-            $set: postData
-        });
-
-        res.status(200).json({})
 
     }
 
     async deletePackageYoutube(req, res) {
 
-        await packageYoutubeModel.deleteOne({ _id: new mongoose.Types.ObjectId(req.params.id) })
+        try {
 
-        res.status(200).json({})
+            await packageYoutubeModel.deleteOne({ _id: new mongoose.Types.ObjectId(req.params.id) })
+
+            res.status(200).json({})
+        }catch(err) {
+            res.status(500).json({})
+        }
 
     }
 

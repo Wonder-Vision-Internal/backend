@@ -683,25 +683,51 @@ const getMyBookings = async(req,res)=>{
 }
 
 const getCrouselTestimonial = async(req,res)=>{
-    const data = await testimonialModel.find({}).lean();
 
-    res.status(200).json({data})
+    try {
+
+        const data = await testimonialModel.find({}).lean();
+
+        res.status(200).json({data})
+    }catch(err) {
+        res.status(500).json({})
+    }
+
 }
 
 const bestThingsToDo = async (req, res) => {
-    const data = await bestThingsModel.find({ slug: req.params.slug }).lean();
-    res.status(200).json({ data })
+
+    try {
+        const data = await bestThingsModel.find({ slug: req.params.slug }).lean();
+
+        res.status(200).json({ data })
+    }catch(err) {
+        res.status(500).json({})
+    }
+
 }
 
 const bestPlaces = async (req, res) => {
-    const data = await bestPlacesModel.find({ slug: req.params.slug }).lean();
+    try {
+        const data = await bestPlacesModel.find({ slug: req.params.slug }).lean();
     
-    res.status(200).json({ data })
+        res.status(200).json({ data })
+    }catch(err) {
+        res.status(500).json({})
+    }
+
 }
 
 const getpackageYoutubeUrl = async (req, res) => {
-    const data = await packageYoutubeSchema.find({ slug: req.params.slug }).lean();
-    res.status(200).json({ data })
+
+    try {
+
+        const data = await packageYoutubeSchema.find({ slug: req.params.slug }).lean();
+        res.status(200).json({ data })
+    }catch(err) {
+        res.status(500).json({})
+    }
+
 }
 
 

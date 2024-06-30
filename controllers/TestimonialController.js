@@ -87,78 +87,100 @@ async deleteTestimonial(req,res){
 
 
     async addImg(req, res) {
-        const { filename } = req.file;
+        try {
+            const { filename } = req.file;
 
-        res.status(200).json({filename})
+            res.status(200).json({filename})
+        }catch(err) {
+            res.status(500).json({})
+        }
+
     }
 
     async addTestimonialsCrousel(req, res) {
 
-        const postData = {};
+        try {
+            const postData = {};
 
-        if(req.body.userImg) {
-            postData.userImg = req.body.userImg;
-        }
+            if(req.body.userImg) {
+                postData.userImg = req.body.userImg;
+            }
+    
+            if(req.body.userName) {
+                postData.userName = req.body.userName;
+            }
+            
+            if(req.body.title) {
+                postData.title = req.body.title;
+            }
+    
+            if(req.body.screenImg) {
+                postData.screenImg = req.body.screenImg;
+            }
+    
+            await testimonialModel.create(postData);
+            
+            res.status(200).json({})
 
-        if(req.body.userName) {
-            postData.userName = req.body.userName;
+        }catch(err) {
+            res.status(500).json({})
         }
-        
-        if(req.body.title) {
-            postData.title = req.body.title;
-        }
-
-        if(req.body.screenImg) {
-            postData.screenImg = req.body.screenImg;
-        }
-
-        await testimonialModel.create(postData);
-        
-        res.status(200).json({})
 
     }
  
     async getTestimonialsCrousel(req, res) {
-        
-        const data = await testimonialModel.find({}).lean();
+        try {
+            const data = await testimonialModel.find({}).lean();
 
-        res.status(200).json({data})
+            res.status(200).json({data})
+        }catch(err) {
+            res.status(500).json({})
+        }
 
     }
 
     async updateTestimonialsCrousel(req, res) {
 
-        const postData = {};
+        try {
+            const postData = {};
 
-        if(req.body.userImg) {
-            postData.userImg = req.body.userImg;
+            if(req.body.userImg) {
+                postData.userImg = req.body.userImg;
+            }
+    
+            if(req.body.userName) {
+                postData.userName = req.body.userName;
+            }
+            
+            if(req.body.title) {
+                postData.title = req.body.title;
+            }
+    
+            if(req.body.screenImg) {
+                postData.screenImg = req.body.screenImg;
+            }
+    
+            await testimonialModel.updateOne({_id: new mongoose.Types.ObjectId(req.params.id)}, {
+                $set: postData
+            });
+            
+            res.status(200).json({})
+        }catch(err) {
+            res.status(500).json({})
         }
-
-        if(req.body.userName) {
-            postData.userName = req.body.userName;
-        }
-        
-        if(req.body.title) {
-            postData.title = req.body.title;
-        }
-
-        if(req.body.screenImg) {
-            postData.screenImg = req.body.screenImg;
-        }
-
-        await testimonialModel.updateOne({_id: new mongoose.Types.ObjectId(req.params.id)}, {
-            $set: postData
-        });
-        
-        res.status(200).json({})
-
     }
 
     async deleteTestimonialsCrousel(req, res) {
-        
-        await testimonialModel.deleteOne( { _id: new mongoose.Types.ObjectId(req.params.id) } )
 
-        res.status(200).json({})
+        try {
+                    
+            await testimonialModel.deleteOne( { _id: new mongoose.Types.ObjectId(req.params.id) } )
+
+            res.status(200).json({})
+
+        }catch(err) {
+            res.status(500).json({})
+        }
 
     }
 
