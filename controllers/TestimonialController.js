@@ -86,6 +86,12 @@ async deleteTestimonial(req,res){
 }
 
 
+    async addImg(req, res) {
+        const { filename } = req.file;
+
+        res.status(200).json({filename})
+    }
+
     async addTestimonialsCrousel(req, res) {
 
         const postData = {};
