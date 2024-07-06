@@ -16,6 +16,10 @@ class PackageYoutubeUrlController {
             if (req.body.url) {
                 postData.url = req.body.url;
             }
+
+            if (req.body.type) {
+                postData.type = req.body.type.trim().toUpperCase();
+            }
     
             await packageYoutubeModel.create(postData);
     
@@ -52,6 +56,10 @@ class PackageYoutubeUrlController {
     
             if (req.body.url) {
                 postData.url = req.body.url;
+            }
+
+            if (req.body.type) {
+                postData.type = req.body.type.trim().toUpperCase();
             }
     
             await packageYoutubeModel.updateOne({ _id: new mongoose.Types.ObjectId(req.params.id) }, {

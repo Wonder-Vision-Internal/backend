@@ -210,7 +210,7 @@ router.post('/add-testimonials-crousel', testimonialController.addTestimonialsCr
 
 router.get('/get-testimonials-crousel', testimonialController.getTestimonialsCrousel)
 
-router.patch('/update-testimonials-crousel/:id', testimonialController.updateTestimonialsCrousel)
+router.post('/update-testimonials-crousel/:id', testimonialController.updateTestimonialsCrousel)
 
 router.delete('/delete-testimonials-crousel/:id', testimonialController.deleteTestimonialsCrousel)
 
@@ -218,7 +218,7 @@ router.post('/add-best-things-to-do', bestThingsController.addBestThingsToDo)
 
 router.get('/get-best-things-to-do', bestThingsController.getBestThingsToDo)
 
-router.patch('/update-best-things-to-do/:id', bestThingsController.updateBestThingsToDo)
+router.post('/update-best-things-to-do/:id', bestThingsController.updateBestThingsToDo)
 
 router.delete('/delete-best-things-to-do/:id', bestThingsController.deleteBestThingsToDo)
 
@@ -226,7 +226,7 @@ router.post('/add-best-places', bestPlacesController.addBestPlaces)
 
 router.get('/get-best-places', bestPlacesController.getBestPlaces)
 
-router.patch('/update-best-places/:id', bestPlacesController.updateBestPlaces)
+router.post('/update-best-places/:id', bestPlacesController.updateBestPlaces)
 
 router.delete('/delete-best-places/:id', bestPlacesController.deleteBestPlaces)
 
@@ -234,7 +234,7 @@ router.post('/add-package-youtube-url', packageYoutubeUrlController.addPackageYo
 
 router.get('/get-package-youtube-url', packageYoutubeUrlController.getPackageYoutube)
 
-router.patch('/update-package-youtube-url/:id', packageYoutubeUrlController.updatePackageYoutube)
+router.post('/update-package-youtube-url/:id', packageYoutubeUrlController.updatePackageYoutube)
 
 router.delete('/delete-package-youtube-url/:id', packageYoutubeUrlController.deletePackageYoutube)
 

@@ -44,7 +44,10 @@ router.get('/get-testimonials-crousel', FrontController.getCrouselTestimonial);
 
 router.get('/best-things-to-do/:slug', FrontController.bestThingsToDo);
 router.get('/best-places/:slug', FrontController.bestPlaces);
-router.get('/package-youtube-url/:slug', FrontController.getpackageYoutubeUrl);
+router.get('/package-youtube-url/tour-guidance/:slug', FrontController.getpackageTourGuidanceYoutubeUrl);
+
+router.get('/package-youtube-url/our-happy-client/:slug', FrontController.getpackageOurHappyClientYoutubeUrl);
+
 
 
 

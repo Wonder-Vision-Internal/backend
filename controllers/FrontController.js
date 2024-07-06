@@ -718,11 +718,11 @@ const bestPlaces = async (req, res) => {
 
 }
 
-const getpackageYoutubeUrl = async (req, res) => {
+const getpackageTourGuidanceYoutubeUrl = async (req, res) => {
 
     try {
-
-        const data = await packageYoutubeSchema.find({ slug: req.params.slug }).lean();
+        const type = "TOUR GUIDANCE"
+        const data = await packageYoutubeSchema.find({ slug: req.params.slug, type}).lean();
         res.status(200).json({ data })
     }catch(err) {
         res.status(500).json({})
@@ -730,6 +730,18 @@ const getpackageYoutubeUrl = async (req, res) => {
 
 }
 
+
+const getpackageOurHappyClientYoutubeUrl = async (req, res) => {
+
+    try {
+        const type = "OUR HAPPY CLIENTS"
+        const data = await packageYoutubeSchema.find({ slug: req.params.slug, type }).lean();
+        res.status(200).json({ data })
+    }catch(err) {
+        res.status(500).json({})
+    }
+
+}
 
 module.exports = {
     Login,
@@ -758,5 +770,6 @@ module.exports = {
     getCrouselTestimonial,
     bestThingsToDo,
     bestPlaces,
-    getpackageYoutubeUrl
+    getpackageTourGuidanceYoutubeUrl,
+    getpackageOurHappyClientYoutubeUrl
 };
